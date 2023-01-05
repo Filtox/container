@@ -187,19 +187,13 @@ networks:
 
 - Quelles lignes du résultat de la commande docker inspect justifient ce comportement ?
 
-Pour vérifier que les services web et db ne peuvent pas effectuer de ping l'un vers l'autre, vous pouvez utiliser la commande docker network inspect pour afficher des informations sur les réseaux et les services connectés à chacun d'eux. Le résultat de cette commande inclura des informations sur les adresses IP attribuées aux services et aux réseaux, ainsi que sur les réseaux auxquels chaque service est connecté.
-Par exemple, si vous exécutez la commande suivante :
+On peut utiliser la commande docker network inspect pour afficher des informations sur les réseaux et les services connectés à chacun d'eux.
+La commande `docker network inspect frontend` indiquera des informations sur les services web et app connectés au réseau frontend, ainsi que sur leurs adresses IP respectives.<br>
 
-docker network inspect frontend
-Le résultat inclura des informations sur les services web et app connectés au réseau frontend, ainsi que sur leurs adresses IP respectives. Si vous exécutez la commande suivante :
-
-docker network inspect backend
-Le résultat inclura des informations sur le service db connecté au réseau backend, ainsi que sur son adresse IP.
+La commande `docker network inspect backend` indiquera des informations sur le service db connecté au réseau backend, ainsi que sur son adresse IP.
 
 Les lignes du résultat de ces commandes qui justifient le fait que les services web et db ne peuvent pas effectuer de ping l'un vers l'autre sont les lignes qui indiquent que les services sont connectés à des réseaux différents (frontend et backend respectivement) et ont donc des adresses IP différentes.
 
 - Dans quelle situation réelles (avec quelles images) pourrait-on avoir cette configuration réseau ? Dans quel but ?
 
-Il est possible de créer une configuration réseau similaire en utilisant des images Docker différentes pour les services web, app et db. Cette configuration pourrait être utilisée dans un environnement d'application où l'application est divisée en différents services qui communiquent entre eux via des réseaux.
-
-Par exemple, si l'application comporte une interface utilisateur (web), une couche d'application (app) qui gère les logiques métier et les communications avec la base de données (db), on pourrait utiliser cette configuration réseau pour séparer l'interface utilisateur et la couche d'application de la base de données. Cela permet de sécuriser les communications entre ces différents services en limitant les interactions entre eux uniquement aux échanges nécessaires pour l'application.
+Cette configuration réseau est applicable à des images web et de base de données par exemple.
