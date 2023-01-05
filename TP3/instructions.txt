@@ -1,0 +1,9 @@
+Préparer un fichier docker-compose.yml permettant de créer un environnement de développement Web PHP.
+
+Vous devrez avoir les services suivants :
+
+Apache
+PHP
+Mysql
+phpmyadmin
+Une fois votre environnement docker démarré, vous devez être capable de développer de nouvelles lignes de codes et de les voir en action sans faire de nouvelles actions sur votre environnement Docker

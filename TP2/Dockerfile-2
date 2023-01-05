@@ -1,0 +1,8 @@
+FROM node:12-alpine3.9
+
+COPY . .
+
+# Permet d'installer les modules que l'on a besoin
+RUN npm install --production
+
+CMD ["node", "src/index.js"]
